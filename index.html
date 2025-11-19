@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Basic HTML Page</title>
+
+  <!-- Simple styles (kept inline for a single-file starter) -->
+  <style>
+    :root {
+      --accent: #2b6cb0;
+      --muted: #666;
+      --card-bg: #f8fafc;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    body { margin: 0; line-height: 1.5; color: #111; background: #fff; }
+    header { background: var(--accent); color: white; padding: 1rem 1.25rem; }
+    nav a { color: rgba(255,255,255,0.9); margin-right: 0.75rem; text-decoration: none; font-weight: 600; }
+    .container { max-width: 900px; margin: 1.25rem auto; padding: 0 1rem; }
+    .hero { background: linear-gradient(90deg, rgba(43,108,176,0.1), rgba(43,108,176,0.03)); padding: 1.25rem; border-radius: 10px; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem; }
+    @media(min-width:720px){ .grid { grid-template-columns: 1fr 320px; } }
+
+    .card { background: var(--card-bg); padding: 1rem; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+    footer { text-align:center; color:var(--muted); padding: 1.25rem 0; margin-top: 1.5rem; border-top: 1px solid #eee; }
+
+    input, button, textarea {
+      font: inherit; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px;
+    }
+    button { background: var(--accent); color: white; border: 0; cursor: pointer; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 0.5rem; border-bottom: 1px solid #eee; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;">
+      <div style="font-weight:700">MySite</div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="home" class="hero">
+      <h1 style="margin-top:0">Welcome to your basic HTML page</h1>
+      <p style="color:var(--muted)">A simple starter template with layout, form, table and a bit of JavaScript.</p>
+    </section>
+
+    <div class="grid">
+      <!-- Main column -->
+      <section class="card">
+        <h2>Quick demo</h2>
+        <p>This section shows a small interactive form. Try submitting it.</p>
+
+        <form id="demoForm">
+          <label for="name">Your name</label><br />
+          <input id="name" name="name" type="text" placeholder="Jane Doe" required /><br /><br />
+
+          <label for="message">Message</label><br />
+          <textarea id="message" name="message" placeholder="Say something..." rows="3"></textarea><br /><br />
+
+          <button type="submit">Send</button>
+        </form>
+
+        <div id="result" style="margin-top:1rem;color:var(--muted)"></div>
+
+        <hr />
+
+        <h3>Sample table</h3>
+        <table aria-label="sample data">
+          <thead>
+            <tr><th>#</th><th>Name</th><th>Role</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Shivani</td><td>Developer</td></tr>
+            <tr><td>2</td><td>Alex</td><td>Designer</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Sidebar -->
+      <aside class="card">
+        <h3>About</h3>
+        <p style="color:var(--muted)">This is a tiny sidebar. You can replace this text with links, images or anything else.</p>
+
+        <h4>Image</h4>
+        <!-- Replace src with your image path -->
+        <img src="https://via.placeholder.com/300x160.png?text=Your+Image" alt="placeholder" style="width:100%;border-radius:6px" />
+
+        <h4 style="margin-top:0.75rem">Links</h4>
+        <ul style="padding-left:1.1rem;margin:0;color:var(--muted)">
+          <li><a href="https://example.com" target="_blank">External example.com</a></li>
+          <li><a href="#contact">Jump to contact</a></li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>© <span id="year"></span> MySite — built with HTML</small>
+    </div>
+  </footer>
+
+  <!-- Tiny JavaScript -->
+  <script>
+    // Set year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Handle form submit (prevents page reload)
+    document.getElementById('demoForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const out = document.getElementById('result');
+      out.textContent = `Thanks, ${name || 'friend'} — your message was received: "${message || '[empty]'}"`;
+      // clear fields
+      this.reset();
+    });
+  </script>
+</body>
+</html>
