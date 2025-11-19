@@ -124,3 +124,24 @@ sudo docker ps sudo docker stop
 Terminate EC2 Instance
 
 Instance State → Terminate
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Kubernetes / Minikube Quick Commands Reference
+1. Start Minikube
+minikube start
+2. Create a Deployment
+kubectl create deployment --image=
+Example: kubectl create deployment mynginx --image=nginx
+3. Expose Deployment as a Service
+kubectl expose deployment mynginx --type=NodePort --port=80 --target-port=80
+4. Scale Deployment
+kubectl scale deployment mynginx --replicas=4
+5. Get Pods
+kubectl get pods
+6. Get Deployments
+kubectl get deployments
+7. Port Forward a Service
+kubectl port-forward svc/mynginx 8081:80
+8. Launch Minikube Dashboard
+minikube dashboard
