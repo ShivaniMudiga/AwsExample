@@ -1,0 +1,210 @@
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# https://maven.apache.org/wrapper/#usage-without-binary-jar
+.mvn/wrapper/maven-wrapper.jar
+
+# Eclipse m2e generated files
+# Eclipse Core
+.project
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+
+open windowpowershell as administration
+minikube kubectl -- get pods -A
+
+.   kubectl create deployment mynginx --image=nginx
+
+if already created then 
+
+.   kubectl set image deployment/myngnix nginx=nginx:latest
+
+.   kubectl get deployments
+
+kubectl get pods
+kubectl describe pods
+
+
+
+. kubectl expose deployment mynginx --type=NodePort --port=80 --target-port=80
+
+. kubectl scale deployment mynginx --replicas=4
+. kubectl get service myngnix
+. kubectl port-forward svc/mynginx 8081:80
+
+
+oStart the tunnel:
+minikube tunnel
+oRetrieve the service URL:
+minikube service mynginx --url
+oOpen the provided URL in your browser.
+oOpen the kubernets dashboard
+
+1.Stop Nginx Deployment:
+oCommands:
+kubectl delete deployment mynginx
+kubectl delete service mynginx
+2.Stop Minikube (Optional):
+oCommand:
+minikube stop
+3.Delete Minikube Cluster (Optional):
+oCommand:minikube delete
+
+
+
+Nagios Automation Steps
+
+docker pull jasonrivers/nagios:latest
+docker run --name nagiosdemo -p 8888:80 jasonrivers/nagios:latest
+
+Open your browser and navigate to:
+http://localhost:8888
+oLogin Credentials:
+Username: nagiosadmin
+Password: nagios
+
+docker stop nagiosdemo
+docker rm nagiosdemo
+
+docker images
+docker rmijasonrivers/nagios:latest
+
+
+
+aws
+navigate to that downloaded ckey pair folder
+then paste that copied ssh -i 
+
+sudo apt update
+sudo apt-get install docker.io
+sudo apt install git
+sudo apt install nano
+clone the repo
+navigate to the folder..
+write the dockerfile..
+create image sudo docker build -t webapp .
+run sudo docker run -d -p 80:80 webapp
+
+
+
+
+
+Dockerfile for .war
+FROM tomcat:9.0-jdk17-temurin
+
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
+
+# Copy WAR from target folder into Tomcat
+COPY target/*.war /usr/local/tomcat/webapps/ROOT.war
+
+EXPOSE 8080
+
+CMD ["catalina.sh", "run"]
+
+or
+
+
+
+Dockerfile for .jar
+# ----- Dockerfile for JAR Deployment -----
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+# Copy JAR file
+COPY *.jar app.jar
+
+EXPOSE 8080
+
+# Run the JAR
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+pipeline {
+    agent any
+
+    tools {
+        jdk 'JAVA_HOME'
+        maven 'MAVEN_HOME'
+    }
+
+    stages {
+
+        stage('Clone Code') {
+            steps {
+                git branch: 'master', url: 'https://github.com/gampa-anupama/sample_mavenwebproject.git'
+            }
+        }
+
+        stage('Build Project') {
+            steps {
+                bat 'mvn clean package'
+            }
+        }
+
+        stage('Deploy to Tomcat') {
+            steps {
+                bat 'copy target\\samplemavenwebproject.war C:\\Users\\anupa\\Downloads\\apache-tomcat-9.0.112\\apache-tomcat-9.0.112\\webapps\\'
+            }
+        }
+
+        stage('Restart Tomcat') {
+            steps {
+                bat 'C:\\Users\\anupa\\Downloads\\apache-tomcat-9.0.112\\apache-tomcat-9.0.112\\bin\\shutdown.bat || exit 0'
+                bat 'C:\\Users\\anupa\\Downloads\\apache-tomcat-9.0.112\\apache-tomcat-9.0.112\\bin\\startup.bat'
+            }
+        }
+
+        stage('Done') {
+            steps {
+                echo "App deployed at http://localhost:8081/samplemavenwebproject"
+            }
+        }
+    }
+}
+
+witout ngrok
+npm install -g localtunnel
+lt --port 8080
+
+then in git in webhooks replace this https://loose-pets-refuse.loca.lt/github-webhook/
+
+ 
+pipeline {
+    agent any
+    tools{
+        jdk 'JAVA_HOME'
+        maven 'MAVEN_HOME'
+    }
+    stages {
+        stage('git repo & clean') {
+            steps {
+                bat "rmdir /s /q Harshitha_Jenkins_Maven || exit 0"
+                bat "git clone https://github.com/Harshitha-Macha/Harshitha_Jenkins_Maven.git"
+                bat "mvn clean -f Harshitha_Jenkins_Maven/pom.xml"
+            }
+        }
+        stage('install') {
+            steps {
+                bat "mvn install -f Harshitha_Jenkins_Maven/pom.xml" 
+            }
+        }
+        stage('test') {
+            steps {
+                bat "mvn test -f Harshitha_Jenkins_Maven/pom.xml"
+            }
+        }
+        stage('package') {
+            steps {
+                bat "mvn package -f Harshitha_Jenkins_Maven/pom.xml"
+            }
+        }
+    }
+}
