@@ -34,94 +34,12 @@
 </head>
 <body>
 
-  <header>
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;">
-      <div style="font-weight:700">MySite</div>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <h1> Welcome to Maven Project </h1>
+  
 
-  <main class="container">
-    <section id="home" class="hero">
-      <h1 style="margin-top:0">Welcome to your basic HTML page</h1>
-      <p style="color:var(--muted)">A simple starter template with layout, form, table and a bit of JavaScript.</p>
-    </section>
+     
 
-    <div class="grid">
-      <!-- Main column -->
-      <section class="card">
-        <h2>Quick demo</h2>
-        <p>This section shows a small interactive form. Try submitting it.</p>
-
-        <form id="demoForm">
-          <label for="name">Your name</label><br />
-          <input id="name" name="name" type="text" placeholder="Jane Doe" required /><br /><br />
-
-          <label for="message">Message</label><br />
-          <textarea id="message" name="message" placeholder="Say something..." rows="3"></textarea><br /><br />
-
-          <button type="submit">Send</button>
-        </form>
-
-        <div id="result" style="margin-top:1rem;color:var(--muted)"></div>
-
-        <hr />
-
-        <h3>Sample table</h3>
-        <table aria-label="sample data">
-          <thead>
-            <tr><th>#</th><th>Name</th><th>Role</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>1</td><td>Shivani</td><td>Developer</td></tr>
-            <tr><td>2</td><td>Alex</td><td>Designer</td></tr>
-          </tbody>
-        </table>
-      </section>
-
-      <!-- Sidebar -->
-      <aside class="card">
-        <h3>About</h3>
-        <p style="color:var(--muted)">This is a tiny sidebar. You can replace this text with links, images or anything else.</p>
-
-        <h4>Image</h4>
-        <!-- Replace src with your image path -->
-        <img src="https://via.placeholder.com/300x160.png?text=Your+Image" alt="placeholder" style="width:100%;border-radius:6px" />
-
-        <h4 style="margin-top:0.75rem">Links</h4>
-        <ul style="padding-left:1.1rem;margin:0;color:var(--muted)">
-          <li><a href="https://example.com" target="_blank">External example.com</a></li>
-          <li><a href="#contact">Jump to contact</a></li>
-        </ul>
-      </aside>
-    </div>
-  </main>
-
-  <footer>
-    <div class="container">
-      <small>© <span id="year"></span> MySite — built with HTML</small>
-    </div>
-  </footer>
-
-  <!-- Tiny JavaScript -->
-  <script>
-    // Set year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Handle form submit (prevents page reload)
-    document.getElementById('demoForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const message = document.getElementById('message').value.trim();
-      const out = document.getElementById('result');
-      out.textContent = `Thanks, ${name || 'friend'} — your message was received: "${message || '[empty]'}"`;
-      // clear fields
-      this.reset();
-    });
-  </script>
+ 
+ 
 </body>
 </html>
